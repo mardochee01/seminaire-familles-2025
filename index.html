@@ -6,6 +6,8 @@
     <title>Séminaire des Familles 2025 - CCR</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Ajout de Swiper CSS pour le carousel -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <style>
         * {
             margin: 0;
@@ -23,28 +25,109 @@
         }
 
         /* ============================================
-           HEADER STYLES - COMME LE SITE JIF
+           CAROUSEL STYLES - NOUVEAU CAROUSEL AUTOMATIQUE
            ============================================ */
-        header {
+        .header-carousel {
             width: 100%;
+            height: auto;
             position: relative;
             overflow: hidden;
-            background-color: #f8f9fa;
         }
 
-        .header-image-container {
+        .swiper {
             width: 100%;
-            height: auto;
+            height: 600px;
+        }
+
+        .swiper-slide {
             position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             display: block;
         }
 
-        .header-banner {
-            width: 100%;
-            height: auto;
-            display: block;
-            object-fit: cover;
-            max-height: 600px;
+        /* Overlay pour améliorer la lisibilité du texte */
+        .slide-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .slide-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        .slide-subtitle {
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+        }
+
+        .slide-cta {
+            background: linear-gradient(135deg, #e30613 0%, #dc004e 100%);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(227, 6, 19, 0.4);
+        }
+
+        .slide-cta:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(227, 6, 19, 0.6);
+        }
+
+        /* Navigation du carousel */
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: white;
+            background: rgba(227, 6, 19, 0.7);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            backdrop-filter: blur(10px);
+        }
+
+        .swiper-button-next:after,
+        .swiper-button-prev:after {
+            font-size: 1.5rem;
+        }
+
+        .swiper-pagination-bullet {
+            background: white;
+            opacity: 0.6;
+            width: 12px;
+            height: 12px;
+        }
+
+        .swiper-pagination-bullet-active {
+            background: #e30613;
+            opacity: 1;
         }
 
         /* ============================================
@@ -297,6 +380,116 @@
             left: 0;
             color: #e30613;
             font-weight: bold;
+        }
+
+        /* ============================================
+           CHECKLIST SECTION - NOUVELLE SECTION
+           ============================================ */
+        .checklist-section {
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, #7cb342 0%, #689f38 100%);
+            color: white;
+            margin: 3rem 0;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(124, 179, 66, 0.3);
+        }
+
+        .checklist-section h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .checklist-section h2::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: white;
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        .checklist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .checklist-card {
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            border-left: 5px solid #e30613;
+        }
+
+        .checklist-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .checklist-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .checklist-number {
+            background: #e30613;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 1rem;
+            flex-shrink: 0;
+            font-size: 1.1rem;
+        }
+
+        .checklist-content {
+            flex: 1;
+        }
+
+        .checklist-content strong {
+            color: #e30613;
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .checklist-content p {
+            color: #555;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .checklist-note {
+            background: rgba(255, 255, 255, 0.9);
+            color: #e30613;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+            text-align: center;
+            border: 2px dashed #e30613;
+            font-weight: 600;
         }
 
         /* ============================================
@@ -587,9 +780,33 @@
            ============================================ */
 
         @media (max-width: 768px) {
-            /* Header Mobile */
-            .header-banner {
-                max-height: 400px;
+            /* Carousel Mobile */
+            .swiper {
+                height: 400px;
+            }
+
+            .slide-title {
+                font-size: 2rem;
+            }
+
+            .slide-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .slide-cta {
+                padding: 0.8rem 2rem;
+                font-size: 1rem;
+            }
+
+            .swiper-button-next,
+            .swiper-button-prev {
+                width: 40px;
+                height: 40px;
+            }
+
+            .swiper-button-next:after,
+            .swiper-button-prev:after {
+                font-size: 1.2rem;
             }
             
             /* Container Mobile */
@@ -682,6 +899,46 @@
                 font-size: 0.9rem;
             }
 
+            /* Checklist Section Mobile */
+            .checklist-section {
+                padding: 2rem 1rem;
+                margin: 2rem 0;
+            }
+            
+            .checklist-section h2 {
+                font-size: 1.8rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .checklist-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .checklist-card {
+                padding: 1.5rem 1rem;
+            }
+            
+            .checklist-item {
+                margin-bottom: 1.2rem;
+                padding-bottom: 1.2rem;
+            }
+            
+            .checklist-number {
+                width: 30px;
+                height: 30px;
+                font-size: 1rem;
+            }
+            
+            .checklist-content strong {
+                font-size: 1rem;
+            }
+            
+            .checklist-note {
+                padding: 1.2rem;
+                margin-top: 1.5rem;
+            }
+
             /* CTA Section Mobile */
             .cta-section {
                 padding: 2.5rem 1.5rem;
@@ -760,6 +1017,23 @@
         }
 
         @media (max-width: 480px) {
+            .swiper {
+                height: 300px;
+            }
+
+            .slide-title {
+                font-size: 1.5rem;
+            }
+
+            .slide-subtitle {
+                font-size: 1rem;
+            }
+
+            .slide-cta {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
             .container {
                 padding: 0.8rem 2.5%;
             }
@@ -784,6 +1058,30 @@
             .program-date {
                 font-size: 0.8rem;
                 padding: 0.5rem 1rem;
+            }
+            
+            .checklist-section {
+                padding: 1.5rem 0.8rem;
+            }
+            
+            .checklist-section h2 {
+                font-size: 1.5rem;
+            }
+            
+            .checklist-card {
+                padding: 1.2rem 0.8rem;
+            }
+            
+            .checklist-item {
+                margin-bottom: 1rem;
+                padding-bottom: 1rem;
+            }
+            
+            .checklist-number {
+                width: 25px;
+                height: 25px;
+                font-size: 0.9rem;
+                margin-right: 0.8rem;
             }
             
             .cta-section h2 {
@@ -832,27 +1130,78 @@
             .key-info-card:hover,
             .program-card:hover,
             .cta-btn:hover,
-            .floating-btn:hover {
+            .floating-btn:hover,
+            .slide-cta:hover,
+            .checklist-card:hover {
                 transform: none;
             }
 
             .key-info-card:active,
-            .program-card:active {
+            .program-card:active,
+            .checklist-card:active {
                 transform: scale(0.98);
             }
 
             .cta-btn:active,
-            .floating-btn:active {
+            .floating-btn:active,
+            .slide-cta:active {
                 transform: scale(0.95);
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header with Banner Image - Style JIF -->
+    <!-- Carousel Header - NOUVEAU CAROUSEL AUTOMATIQUE -->
     <header>
-        <div class="header-image-container">
-            <img src="img-seminaire.jpg" alt="Séminaire des Familles 2025" class="header-banner" id="headerBanner">
+        <div class="header-carousel">
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    <!-- Slide 1 -->
+                    <div class="swiper-slide">
+                        <img src="img-seminaire.jpg" alt="Séminaire des Familles 2025">
+                        <div class="slide-overlay">
+                            <!-- <h1 class="slide-title">Séminaire des Familles 2025</h1> -->
+                            <!-- <p class="slide-subtitle">« Prendre soin de sa famille »</p> -->
+                            <!-- <a href="#inscription" class="slide-cta" onclick="openModal()">Je m'inscris</a> -->
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 2 -->
+                    <div class="swiper-slide">
+                        <img src="img-seminaire-5.jpg" alt="Enseignements Bibliques">
+                        <div class="slide-overlay">
+                            <h1 class="slide-title">Des temps de prières pour la familles</h1>
+                            <!-- <p class="slide-subtitle">Des temps de prières pour la familles</p> -->
+                            <a href="#programme" class="slide-cta" onclick="openModal()">Je m'inscris</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 3 -->
+                    <div class="swiper-slide">
+                        <img src="img-seminaire-6.jpg" alt="Communauté Chrétienne">
+                        <div class="slide-overlay">
+                            <h1 class="slide-title">Des temps de rencontre avec les couples</h1>
+                            <!-- <p class="slide-subtitle">Partage et communion fraternelle</p> -->
+                            <a href="#info" class="slide-cta" onclick="openModal()">Rejoindre l'événement</a>
+                        </div>
+                    </div>
+
+                    <!-- Slide 4 -->
+                    <div class="swiper-slide">
+                        <img src="img-seminaire-4.jpg" alt="Moments de Partage">
+                        <div class="slide-overlay">
+                            <h1 class="slide-title">Des temps de restaurations des familles</h1>
+                            <!-- <p class="slide-subtitle">Des temps de restaurations des familles</p> -->
+                            <a href="#contact" class="slide-cta" onclick="openModal()">Participer maintenant</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Navigation -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
         </div>
     </header>
 
@@ -892,7 +1241,7 @@
                 <div class="key-info-card" data-aos="fade-up" data-aos-delay="300">
                     <span class="icon">👥</span>
                     <h3>Pour qui ?</h3>
-                    <p>Couples, familles, jeunes<br>Tous sont bienvenus !</p>
+                    <p>Couples, familles, Célibataire, jeunes<br>Tous sont bienvenus !</p>
                 </div>
             </div>
         </div>
@@ -992,6 +1341,69 @@
             </div>
         </div>
 
+        <!-- NOUVELLE SECTION : Checklist du Randonneur -->
+        <div class="checklist-section" data-aos="fade-up">
+            <h2>🎒 La Check-list du Randonneur</h2>
+            
+            <div class="checklist-grid">
+                <div class="checklist-card" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="checklist-item">
+                        <div class="checklist-number">1</div>
+                        <div class="checklist-content">
+                            <strong>Document d'accès</strong>
+                            <p>Avoir son reçu ou son pass famille d'accès à la randonnée</p>
+                        </div>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <div class="checklist-number">2</div>
+                        <div class="checklist-content">
+                            <strong>Présence et ponctualité</strong>
+                            <p>Venir en famille et à l'heure sur le site à 8h00</p>
+                        </div>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <div class="checklist-number">3</div>
+                        <div class="checklist-content">
+                            <strong>Uniforme requis</strong>
+                            <p>Toute la famille doit se mettre en uniforme selon le groupe de couleur qui lui aura été affecté à l'inscription</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="checklist-card" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="checklist-item">
+                        <div class="checklist-number">4</div>
+                        <div class="checklist-content">
+                            <strong>Équipement de base</strong>
+                            <p>Être équipé de paire de baskets, de serviettes, d'une casquette, de lunettes de soleil si besoin et d'une bouteille d'eau par personne pour la randonnée</p>
+                        </div>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <div class="checklist-number">5</div>
+                        <div class="checklist-content">
+                            <strong>Tenues de rechange</strong>
+                            <p>Prévoir des T-shirt de rechange et tenues de rechanges pour les enfants</p>
+                        </div>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <div class="checklist-number">6</div>
+                        <div class="checklist-content">
+                            <strong>Familles avec bébés</strong>
+                            <p>Les parents ayant des bébés ne sont pas exemptés de la randonnée : Des activités qui s'adaptent au modèle de votre famille ont été prévues sur mesure pour vous</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="checklist-note" data-aos="fade-up" data-aos-delay="300">
+                💡 <strong>Conseil :</strong> Préparez votre équipement la veille pour être prêt à profiter pleinement de cette journée en famille !
+            </div>
+        </div>
+
         <!-- CTA Section - Style JIF -->
         <div class="cta-section" data-aos="fade-up">
             <div class="cta-content">
@@ -1079,7 +1491,52 @@
 
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Ajout de Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
+        // Initialisation du Carousel Swiper
+        const swiper = new Swiper('.swiper', {
+            // Paramètres du carousel
+            loop: true,
+            autoplay: {
+                delay: 2000, // Change toutes les 5 secondes
+                disableOnInteraction: false,
+            },
+            speed: 1000, // Transition de 1 seconde
+            effect: 'fade', // Effet de fondu entre les slides
+            fadeEffect: {
+                crossFade: true
+            },
+            
+            // Navigation
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            
+            // Pagination
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            
+            // Responsive
+            breakpoints: {
+                320: {
+                    slidesPerView: 1,
+                    spaceBetween: 0
+                },
+                768: {
+                    slidesPerView: 1,
+                    spaceBetween: 0
+                },
+                1024: {
+                    slidesPerView: 1,
+                    spaceBetween: 0
+                }
+            }
+        });
+
         // Initialisation AOS
         AOS.init({
             duration: 800,
