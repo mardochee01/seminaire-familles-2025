@@ -25,6 +25,108 @@
         }
 
         /* ============================================
+           COMPTE À REBOURS STYLES
+           ============================================ */
+        .countdown-section {
+            background: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin: 2rem auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            max-width: 1200px;
+        }
+
+        .countdown-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .countdown-section h2::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(135deg, #e30613, #7cb342);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .countdown-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem 1rem;
+            min-width: 140px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .countdown-value {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #e30613, #7cb342);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 10px rgba(227, 6, 19, 0.3);
+        }
+
+        .countdown-label {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .countdown-message {
+            margin-top: 2rem;
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #7cb342;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            display: inline-block;
+        }
+
+        /* Animation pour le compte à rebours */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .countdown-item {
+            animation: pulse 2s infinite;
+        }
+
+        .countdown-item:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        .countdown-item:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        .countdown-item:nth-child(4) {
+            animation-delay: 1.5s;
+        }
+
+        /* ============================================
            CAROUSEL STYLES - NOUVEAU CAROUSEL AUTOMATIQUE
            ============================================ */
         .header-carousel {
@@ -820,6 +922,40 @@
            ============================================ */
 
         @media (max-width: 768px) {
+            /* Compte à rebours Mobile */
+            .countdown-section {
+                padding: 2rem 1rem;
+                margin: 1.5rem auto;
+            }
+
+            .countdown-section h2 {
+                font-size: 1.8rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .countdown-container {
+                gap: 1rem;
+            }
+
+            .countdown-item {
+                min-width: 110px;
+                padding: 1.5rem 0.5rem;
+            }
+
+            .countdown-value {
+                font-size: 2.5rem;
+            }
+
+            .countdown-label {
+                font-size: 0.9rem;
+            }
+
+            .countdown-message {
+                font-size: 1.1rem;
+                padding: 0.8rem 1.5rem;
+                margin-top: 1.5rem;
+            }
+
             /* Carousel Mobile */
             .swiper {
                 height: 400px;
@@ -1069,6 +1205,32 @@
         }
 
         @media (max-width: 480px) {
+            .countdown-section {
+                padding: 1.5rem 0.8rem;
+            }
+
+            .countdown-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .countdown-item {
+                min-width: 80px;
+                padding: 1rem 0.3rem;
+            }
+
+            .countdown-value {
+                font-size: 2rem;
+            }
+
+            .countdown-label {
+                font-size: 0.8rem;
+            }
+
+            .countdown-message {
+                font-size: 1rem;
+                padding: 0.7rem 1.2rem;
+            }
+
             .swiper {
                 height: 300px;
             }
@@ -1233,8 +1395,6 @@
                         <img src="img-seminaire-5.jpg" alt="Enseignements Bibliques">
                         <div class="slide-overlay">
                             <h1 class="slide-title">Des temps de prières pour la familles</h1>
-                            <!-- <p class="slide-subtitle">Des temps de prières pour la familles</p> -->
-                            <!-- <a href="#programme" class="slide-cta" onclick="openModal()">Je m'inscris</a> -->
                         </div>
                     </div>
                     
@@ -1243,8 +1403,6 @@
                         <img src="img-seminaire-6.jpg" alt="Communauté Chrétienne">
                         <div class="slide-overlay">
                             <h1 class="slide-title">Des temps de rencontre avec les couples</h1>
-                            <!-- <p class="slide-subtitle">Partage et communion fraternelle</p> -->
-                            <!-- <a href="#info" class="slide-cta" onclick="openModal()">Rejoindre l'événement</a> -->
                         </div>
                     </div>
 
@@ -1253,8 +1411,6 @@
                         <img src="img-seminaire-4.jpg" alt="Moments de Partage">
                         <div class="slide-overlay">
                             <h1 class="slide-title">Des temps de restaurations des familles</h1>
-                            <!-- <p class="slide-subtitle">Des temps de restaurations des familles</p> -->
-                            <!-- <a href="#contact" class="slide-cta" onclick="openModal()">Participer maintenant</a> -->
                         </div>
                     </div>
                 </div>
@@ -1274,17 +1430,42 @@
 
     <!-- Main Container -->
     <div class="container">
+        <!-- Compte à rebours Section -->
+        <div class="countdown-section" id="countdownSection" data-aos="fade-up">
+            <h2>⏳ Compte à Rebours</h2>
+            <div class="countdown-container">
+                <div class="countdown-item">
+                    <div class="countdown-value" id="days">00</div>
+                    <div class="countdown-label">Jours</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="hours">00</div>
+                    <div class="countdown-label">Heures</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="minutes">00</div>
+                    <div class="countdown-label">Minutes</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="seconds">00</div>
+                    <div class="countdown-label">Secondes</div>
+                </div>
+            </div>
+            <div class="countdown-message" id="countdownMessage">
+                Le séminaire approche à grands pas !
+            </div>
+        </div>
+
         <!-- Theme Section - Style JIF -->
         <div class="theme-section" data-aos="fade-up">
             <h2>🎯 Thème 2025</h2>
             <div class="theme-quote">
                 « Prendre soin de sa famille »
-                <div class="bible-reference">
-                <span class="verse">1 Timothée 3:5</span>
-            </div>
             </div>
             <!-- NOUVEAU : Référence biblique simple -->
-            
+            <div class="bible-reference">
+                <span class="verse">1 Timothée 3:5</span>
+            </div>
             <div class="theme-description">
                 Rejoignez-nous pour trois jours d'enseignements bibliques, de partages et de moments de communion autour de la famille chrétienne.
             </div>
@@ -1296,9 +1477,9 @@
                 <div class="key-info-card" data-aos="fade-up" data-aos-delay="100">
                     <span class="icon">📍</span>
                     <h3>Où ?</h3>
-                    <p><strong>Centre Chrétien de Réveil (CCR)</strong><br>925H+2M2, Rue I7, Abidjan</p>
+                    <p><strong>Centre Chrétien de Réveil (CCR)</strong><br>Rue I64, Abidjan</p>
                     <!-- NOUVEAU : Lien Google Maps avec l'adresse exacte -->
-                    <a href="https://www.google.com/maps/dir/''/925H%2B2M2+Centre+Chretien+de+R%C3%A9veil+(+CCR+),+Rue+I7,+Abidjan/@5.3541862,-3.9778263,15.25z/data=!4m13!4m12!1m5!1m1!1s0xfc1edf797c37277:0x8ce6f3befefd5a5d!2m2!1d-3.970854!2d5.357516!1m5!1m1!1s0xfc1edf797c37277:0x8ce6f3befefd5a5d!2m2!1d-3.970854!2d5.357516?entry=ttu&g_ep=EgoyMDI1MTExNy4wIKXMDSoASAFQAw%3D%3D" 
+                    <a href="https://www.google.com/maps/dir//925H%2B2M2+Centre+Chretien+de+R%C3%A9veil+(+CCR+),+Rue+I7,+Abidjan/@5.3576001,-4.012054,13z/data=!4m8!4m7!1m0!1m5!1m1!1s0xfc1edf797c37277:0x8ce6f3befefd5a5d!2m2!1d-3.970854!2d5.357516?entry=ttu&g_ep=EgoyMDI1MTExNy4wIKXMDSoASAFQAw%3D%3D" 
                        target="_blank" 
                        class="location-link">
                         <span class="map-icon">🗺️</span> Voir sur Google Maps
@@ -1492,8 +1673,8 @@
         <div class="modal-content">
             <div class="modal-header" data-aos="fade-up">
                 <span class="close" onclick="closeModal()">&times;</span>
-                <h2>✨ Inscription</h2>
-                <p>Randonnée Familiale à Lambano Lagune</p>
+                <h2>✨ Inscription Randonnée</h2>
+                <p>Randonnée Familiale</p>
             </div>
             <div class="modal-body">
                 <div class="success-message" id="successMessage">
@@ -1528,8 +1709,23 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="participants">Nombre de participants</label>
-                        <input type="number" id="participants" name="participants" min="1" value="1" required>
+                        <label for="adults">Nombre d'adultes *</label>
+                        <input type="number" id="adults" name="adults" min="1" value="1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="children_over_10">Nombre d'enfants (+10 ans) *</label>
+                        <input type="number" id="children_over_10" name="children_over_10" min="0" value="0" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="children_under_10">Nombre d'enfants (-10 ans) *</label>
+                        <input type="number" id="children_under_10" name="children_under_10" min="0" value="0" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="total_amount">Montant total (FCFA) *</label>
+                        <input type="number" id="total_amount" name="total_amount" required placeholder="Calcul automatique" readonly>
                     </div>
 
                     <div class="form-group">
@@ -1552,13 +1748,7 @@
             <p><strong>Séminaire des Familles 2025</strong></p>
             <p>Thème : « Prendre soin de sa famille »</p>
             <p style="margin-top: 1.5rem;">
-                📍 <strong>Centre Chrétien de Réveil (CCR)</strong><br>
-                925H+2M2, Rue I7, Abidjan
-                <br><a href="https://www.google.com/maps/dir/''/925H%2B2M2+Centre+Chretien+de+R%C3%A9veil+(+CCR+),+Rue+I7,+Abidjan/@5.3541862,-3.9778263,15.25z/data=!4m13!4m12!1m5!1m1!1s0xfc1edf797c37277:0x8ce6f3befefd5a5d!2m2!1d-3.970854!2d5.357516!1m5!1m1!1s0xfc1edf797c37277:0x8ce6f3befefd5a5d!2m2!1d-3.970854!2d5.357516?entry=ttu&g_ep=EgoyMDI1MTExNy4wIKXMDSoASAFQAw%3D%3D" 
-                       target="_blank" 
-                       style="color: #e30613; font-weight: 600; text-decoration: underline;">
-                    🗺️ Voir la localisation sur Google Maps
-                </a>
+                📍 <strong>Centre Chrétien de Réveil (CCR)</strong>
             </p>
             <p>
                 📞 <a href="tel:+2250789965351"><strong>+225 07 89 965 351</strong></a><br>
@@ -1573,6 +1763,51 @@
     <!-- Ajout de Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
+        // COMPTE À REBOURS - Fonction principale
+        function updateCountdown() {
+            // Date cible : 3 décembre 2025
+            const targetDate = new Date('December 3, 2025 00:00:00').getTime();
+            const now = new Date().getTime();
+            const timeLeft = targetDate - now;
+
+            // Si la date est passée, on cache le compte à rebours
+            if (timeLeft < 0) {
+                document.getElementById('countdownSection').style.display = 'none';
+                return;
+            }
+
+            // Calcul des unités de temps
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            // Mise à jour de l'affichage
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+
+            // Message dynamique selon le temps restant
+            const messageElement = document.getElementById('countdownMessage');
+            if (days > 30) {
+                messageElement.textContent = 'Le séminaire approche à grands pas !';
+            } else if (days > 7) {
+                messageElement.textContent = 'Plus que quelques semaines avant le séminaire !';
+            } else if (days > 1) {
+                messageElement.textContent = 'Presque là ! Préparez-vous pour cette belle expérience familiale.';
+            } else if (days === 1) {
+                messageElement.textContent = 'Dernier jour ! À demain pour le séminaire !';
+            } else {
+                messageElement.textContent = 'C\'est aujourd\'hui ! Bienvenue au séminaire des familles !';
+            }
+        }
+
+        // Initialisation du compte à rebours
+        updateCountdown();
+        // Mise à jour toutes les secondes
+        setInterval(updateCountdown, 1000);
+
         // Initialisation du Carousel Swiper
         const swiper = new Swiper('.swiper', {
             // Paramètres du carousel
@@ -1667,6 +1902,92 @@
             }
         };
 
+        // Calcul automatique du montant total - LOGIQUE CORRIGÉE
+        function calculateTotalAmount() {
+            const participantType = document.getElementById('participantType').value;
+            const adults = parseInt(document.getElementById('adults').value) || 0;
+            const childrenOver10 = parseInt(document.getElementById('children_over_10').value) || 0;
+            const childrenUnder10 = parseInt(document.getElementById('children_under_10').value) || 0;
+            
+            let totalAmount = 0;
+            
+            // Logique de calcul selon le type de participant
+            switch(participantType) {
+                case 'couple':
+                    // Forfait couple à 30.000 F (2 adultes inclus)
+                    totalAmount = 30000;
+                    // Ajouter les enfants de plus de 10 ans
+                    totalAmount += childrenOver10 * 5000;
+                    break;
+                    
+                case 'famille':
+                    // Adultes à 15.000 F chacun
+                    totalAmount = adults * 15000;
+                    // Enfants de plus de 10 ans à 5.000 F chacun
+                    totalAmount += childrenOver10 * 5000;
+                    // Enfants de moins de 10 ans gratuits
+                    break;
+                    
+                case 'celibataire':
+                case 'jeune':
+                    // Adultes à 15.000 F chacun
+                    totalAmount = adults * 15000;
+                    // Enfants de plus de 10 ans à 5.000 F chacun
+                    totalAmount += childrenOver10 * 5000;
+                    break;
+                    
+                default:
+                    totalAmount = 0;
+            }
+            
+            document.getElementById('total_amount').value = totalAmount;
+        }
+
+        // Gestion automatique du nombre d'adultes selon le type
+        function updateAdultsField() {
+            const participantType = document.getElementById('participantType').value;
+            const adultsField = document.getElementById('adults');
+            
+            switch(participantType) {
+                case 'couple':
+                    adultsField.value = 2;
+                    adultsField.disabled = true;
+                    break;
+                    
+                case 'celibataire':
+                case 'jeune':
+                    adultsField.value = 1;
+                    adultsField.disabled = false;
+                    break;
+                    
+                case 'famille':
+                default:
+                    adultsField.disabled = false;
+                    if (adultsField.value < 1) {
+                        adultsField.value = 1;
+                    }
+                    break;
+            }
+            
+            calculateTotalAmount();
+        }
+
+        // Écouteurs d'événements pour le calcul automatique
+        document.getElementById('participantType').addEventListener('change', function() {
+            updateAdultsField();
+            calculateTotalAmount();
+        });
+        
+        document.getElementById('adults').addEventListener('input', calculateTotalAmount);
+        document.getElementById('children_over_10').addEventListener('input', calculateTotalAmount);
+        document.getElementById('children_under_10').addEventListener('input', calculateTotalAmount);
+
+        // Initialisation du formulaire quand le modal s'ouvre
+        function initModalForm() {
+            updateAdultsField();
+            calculateTotalAmount();
+        }
+
         // Form submission
         document.getElementById('registrationForm').addEventListener('submit', async function(e) {
             e.preventDefault();
@@ -1681,13 +2002,16 @@
                 email: document.getElementById('email').value,
                 phone: document.getElementById('phone').value,
                 participantType: document.getElementById('participantType').value,
-                participants: document.getElementById('participants').value,
+                adults: document.getElementById('adults').value,
+                children_over_10: document.getElementById('children_over_10').value,
+                children_under_10: document.getElementById('children_under_10').value,
+                total_amount: document.getElementById('total_amount').value,
                 message: document.getElementById('message').value,
                 timestamp: new Date().toLocaleString('fr-FR')
             };
 
             try {
-                const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzx21wlE9YIfUe0NvV6yEVhsy9b8Z2OnPLHsq7aF_YExT0I_EVeg73hxjSX4Yv04BWdlQ/exec';
+                const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzTuIp4tWPkrDxxE9lg5EWzP_s7WVwk2vW7xAw7Qq-ap3bDymgYGjc_tnuRr-osgLbg/exec';
                 
                 if (GOOGLE_SCRIPT_URL === 'VOTRE_URL_GOOGLE_APPS_SCRIPT_ICI') {
                     console.log('📊 Données du formulaire:', formData);
@@ -1730,6 +2054,13 @@
                 });
             });
         });
+
+        // Initialiser le formulaire quand le modal s'ouvre
+        const originalOpenModal = openModal;
+        openModal = function() {
+            originalOpenModal();
+            setTimeout(initModalForm, 100);
+        };
     </script>
 </body>
 </html>
