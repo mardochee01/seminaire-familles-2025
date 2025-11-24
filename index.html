@@ -188,6 +188,20 @@
             margin: 0 auto;
         }
 
+        /* NOUVEAU : Style pour la référence biblique */
+        .bible-reference {
+            text-align: center;
+            margin-top: 1rem;
+            font-style: italic;
+            opacity: 0.9;
+            font-size: 1rem;
+        }
+
+        .bible-reference .verse {
+            color: white;
+            font-weight: 600;
+        }
+
         /* ============================================
            KEY INFO SECTION - COMME JIF (CARDS HORIZONTALES)
            ============================================ */
@@ -239,6 +253,32 @@
             font-size: 0.95rem;
             color: #555;
             line-height: 1.6;
+        }
+
+        /* NOUVEAU : Style pour le lien de localisation */
+        .location-link {
+            display: inline-block;
+            margin-top: 0.8rem;
+            background: linear-gradient(135deg, #e30613 0%, #dc004e 100%);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(227, 6, 19, 0.3);
+        }
+
+        .location-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(227, 6, 19, 0.4);
+            background: linear-gradient(135deg, #7cb342 0%, #689f38 100%);
+        }
+
+        .location-link .map-icon {
+            margin-right: 5px;
+            font-size: 1rem;
         }
 
         /* ============================================
@@ -837,6 +877,12 @@
                 line-height: 1.5;
             }
 
+            /* Bible Reference Mobile */
+            .bible-reference {
+                font-size: 0.9rem;
+                margin-top: 0.8rem;
+            }
+
             /* Key Info Grid Mobile - Passe en colonne simple */
             .key-info-grid {
                 grid-template-columns: 1fr;
@@ -857,6 +903,12 @@
             
             .key-info-card p {
                 font-size: 0.9rem;
+            }
+
+            /* Location Link Mobile */
+            .location-link {
+                padding: 0.5rem 1rem;
+                font-size: 0.85rem;
             }
 
             /* Program Section Mobile */
@@ -1047,8 +1099,18 @@
                 padding: 0.6rem;
             }
             
+            .bible-reference {
+                font-size: 0.85rem;
+                margin-top: 0.6rem;
+            }
+            
             .key-info-card {
                 padding: 1rem;
+            }
+            
+            .location-link {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
             }
             
             .program-card {
@@ -1217,7 +1279,12 @@
             <h2>🎯 Thème 2025</h2>
             <div class="theme-quote">
                 « Prendre soin de sa famille »
+                <div class="bible-reference">
+                <span class="verse">1 Timothée 3:5</span>
             </div>
+            </div>
+            <!-- NOUVEAU : Référence biblique simple -->
+            
             <div class="theme-description">
                 Rejoignez-nous pour trois jours d'enseignements bibliques, de partages et de moments de communion autour de la famille chrétienne.
             </div>
@@ -1229,7 +1296,13 @@
                 <div class="key-info-card" data-aos="fade-up" data-aos-delay="100">
                     <span class="icon">📍</span>
                     <h3>Où ?</h3>
-                    <p><strong>Cocody - Riviera II</strong><br>Carrefour Cheveaux</p>
+                    <p><strong>Centre Chrétien de Réveil (CCR)</strong><br>925H+2M2, Rue I7, Abidjan</p>
+                    <!-- NOUVEAU : Lien Google Maps avec l'adresse exacte -->
+                    <a href="https://www.google.com/maps/dir/''/925H%2B2M2+Centre+Chretien+de+R%C3%A9veil+(+CCR+),+Rue+I7,+Abidjan/@5.3541862,-3.9778263,15.25z/data=!4m13!4m12!1m5!1m1!1s0xfc1edf797c37277:0x8ce6f3befefd5a5d!2m2!1d-3.970854!2d5.357516!1m5!1m1!1s0xfc1edf797c37277:0x8ce6f3befefd5a5d!2m2!1d-3.970854!2d5.357516?entry=ttu&g_ep=EgoyMDI1MTExNy4wIKXMDSoASAFQAw%3D%3D" 
+                       target="_blank" 
+                       class="location-link">
+                        <span class="map-icon">🗺️</span> Voir sur Google Maps
+                    </a>
                 </div>
                 
                 <div class="key-info-card" data-aos="fade-up" data-aos-delay="200">
@@ -1479,12 +1552,17 @@
             <p><strong>Séminaire des Familles 2025</strong></p>
             <p>Thème : « Prendre soin de sa famille »</p>
             <p style="margin-top: 1.5rem;">
-                📍 <strong>Cocody - Riviera II, Carrefour Cheveaux</strong>
+                📍 <strong>Centre Chrétien de Réveil (CCR)</strong><br>
+                925H+2M2, Rue I7, Abidjan
+                <br><a href="https://www.google.com/maps/dir/''/925H%2B2M2+Centre+Chretien+de+R%C3%A9veil+(+CCR+),+Rue+I7,+Abidjan/@5.3541862,-3.9778263,15.25z/data=!4m13!4m12!1m5!1m1!1s0xfc1edf797c37277:0x8ce6f3befefd5a5d!2m2!1d-3.970854!2d5.357516!1m5!1m1!1s0xfc1edf797c37277:0x8ce6f3befefd5a5d!2m2!1d-3.970854!2d5.357516?entry=ttu&g_ep=EgoyMDI1MTExNy4wIKXMDSoASAFQAw%3D%3D" 
+                       target="_blank" 
+                       style="color: #e30613; font-weight: 600; text-decoration: underline;">
+                    🗺️ Voir la localisation sur Google Maps
+                </a>
             </p>
             <p>
                 📞 <a href="tel:+2250789965351"><strong>+225 07 89 965 351</strong></a><br>
                 📞 <a href="tel:+2250757682956"><strong>+225 07 57 682 956</strong></a>
-                <!-- ✉️ <a href="mailto:contact@ccr-ci.org">contact@ccr-ci.org</a> -->
             </p>
             <p style="margin-top: 1.5rem;">© 2025 Centre Chrétien de Réveil - Tous droits réservés</p>
         </div>
