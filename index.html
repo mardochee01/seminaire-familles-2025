@@ -22,85 +22,107 @@
             background-color: #f8f9fa;
             width: 100%;
             overflow-x: hidden;
+            /* Ajustement du padding-top pour compenser le header fixe */
+            padding-top: 80px;
         }
 
         /* ============================================
-           COMPTE À REBOURS STYLES
+           HEADER FIXE - COMPTE À REBOURS SUR LA MÊME LIGNE
            ============================================ */
-        .countdown-section {
+        .countdown-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
             background: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%);
             color: white;
-            padding: 3rem 2rem;
-            text-align: center;
-            margin: 2rem auto;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            max-width: 1200px;
+            padding: 0.8rem 2rem;
+            z-index: 10000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
         }
 
-        .countdown-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
+        .countdown-header.compact {
+            padding: 0.5rem 1.5rem;
+        }
+
+        .countdown-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 2rem;
+        }
+
+        .countdown-title {
+            font-size: 1.3rem;
             font-weight: 700;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            white-space: nowrap;
         }
 
-        .countdown-section h2::after {
-            content: '';
-            display: block;
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(135deg, #e30613, #7cb342);
-            margin: 1rem auto;
-            border-radius: 2px;
+        .countdown-header.compact .countdown-title {
+            font-size: 1.1rem;
         }
 
         .countdown-container {
             display: flex;
-            justify-content: center;
-            gap: 1.5rem;
+            gap: 1rem;
             flex-wrap: wrap;
-            max-width: 800px;
-            margin: 0 auto;
+            justify-content: flex-end;
+        }
+
+        .countdown-header.compact .countdown-container {
+            gap: 0.7rem;
         }
 
         .countdown-item {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 2rem 1rem;
-            min-width: 140px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            padding: 0.7rem 0.5rem;
+            min-width: 80px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        .countdown-header.compact .countdown-item {
+            padding: 0.5rem 0.3rem;
+            min-width: 70px;
+            border-radius: 6px;
         }
 
         .countdown-value {
-            font-size: 3.5rem;
+            font-size: 1.8rem;
             font-weight: 800;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.2rem;
             background: linear-gradient(135deg, #e30613, #7cb342);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-shadow: 0 2px 10px rgba(227, 6, 19, 0.3);
         }
 
+        .countdown-header.compact .countdown-value {
+            font-size: 1.5rem;
+            margin-bottom: 0.1rem;
+        }
+
         .countdown-label {
-            font-size: 1.1rem;
+            font-size: 0.8rem;
             font-weight: 600;
             color: #fff;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
+        }
+
+        .countdown-header.compact .countdown-label {
+            font-size: 0.7rem;
         }
 
         .countdown-message {
-            margin-top: 2rem;
-            font-size: 1.3rem;
-            font-weight: 500;
-            color: #7cb342;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            display: inline-block;
+            display: none; /* Caché comme demandé */
         }
 
         /* Animation pour le compte à rebours */
@@ -134,6 +156,7 @@
             height: auto;
             position: relative;
             overflow: hidden;
+            margin-top: 0;
         }
 
         .swiper {
@@ -921,39 +944,82 @@
            RESPONSIVE MOBILE - COMME LE SITE JIF
            ============================================ */
 
-        @media (max-width: 768px) {
-            /* Compte à rebours Mobile */
-            .countdown-section {
-                padding: 2rem 1rem;
-                margin: 1.5rem auto;
+        @media (max-width: 1024px) {
+            .countdown-title {
+                font-size: 1.1rem;
             }
-
-            .countdown-section h2 {
-                font-size: 1.8rem;
-                margin-bottom: 1.5rem;
-            }
-
-            .countdown-container {
-                gap: 1rem;
-            }
-
-            .countdown-item {
-                min-width: 110px;
-                padding: 1.5rem 0.5rem;
-            }
-
+            
             .countdown-value {
-                font-size: 2.5rem;
+                font-size: 1.5rem;
+            }
+            
+            .countdown-label {
+                font-size: 0.7rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            /* Ajustement du padding-top du body pour mobile */
+            body {
+                padding-top: 70px;
             }
 
-            .countdown-label {
+            /* Header fixe Mobile */
+            .countdown-header {
+                padding: 0.6rem 1rem;
+            }
+
+            .countdown-header.compact {
+                padding: 0.4rem 0.8rem;
+            }
+
+            .countdown-content {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .countdown-title {
+                font-size: 1rem;
+                text-align: center;
+            }
+
+            .countdown-header.compact .countdown-title {
                 font-size: 0.9rem;
             }
 
-            .countdown-message {
-                font-size: 1.1rem;
-                padding: 0.8rem 1.5rem;
-                margin-top: 1.5rem;
+            .countdown-container {
+                gap: 0.3rem;
+                justify-content: center;
+            }
+
+            .countdown-header.compact .countdown-container {
+                gap: 0.2rem;
+            }
+
+            .countdown-item {
+                min-width: 60px;
+                padding: 0.5rem 0.2rem;
+            }
+
+            .countdown-header.compact .countdown-item {
+                min-width: 50px;
+                padding: 0.3rem 0.1rem;
+            }
+
+            .countdown-value {
+                font-size: 1.2rem;
+            }
+
+            .countdown-header.compact .countdown-value {
+                font-size: 1rem;
+            }
+
+            .countdown-label {
+                font-size: 0.6rem;
+            }
+
+            .countdown-header.compact .countdown-label {
+                font-size: 0.5rem;
             }
 
             /* Carousel Mobile */
@@ -1205,30 +1271,62 @@
         }
 
         @media (max-width: 480px) {
-            .countdown-section {
-                padding: 1.5rem 0.8rem;
+            body {
+                padding-top: 60px;
             }
 
-            .countdown-section h2 {
-                font-size: 1.5rem;
+            .countdown-header {
+                padding: 0.5rem 0.8rem;
             }
 
-            .countdown-item {
-                min-width: 80px;
-                padding: 1rem 0.3rem;
+            .countdown-header.compact {
+                padding: 0.3rem 0.6rem;
             }
 
-            .countdown-value {
-                font-size: 2rem;
+            .countdown-content {
+                gap: 0.3rem;
             }
 
-            .countdown-label {
+            .countdown-title {
+                font-size: 0.9rem;
+            }
+
+            .countdown-header.compact .countdown-title {
                 font-size: 0.8rem;
             }
 
-            .countdown-message {
+            .countdown-container {
+                gap: 0.2rem;
+            }
+
+            .countdown-header.compact .countdown-container {
+                gap: 0.1rem;
+            }
+
+            .countdown-item {
+                min-width: 50px;
+                padding: 0.4rem 0.1rem;
+            }
+
+            .countdown-header.compact .countdown-item {
+                min-width: 40px;
+                padding: 0.2rem 0.1rem;
+            }
+
+            .countdown-value {
                 font-size: 1rem;
-                padding: 0.7rem 1.2rem;
+            }
+
+            .countdown-header.compact .countdown-value {
+                font-size: 0.9rem;
+            }
+
+            .countdown-label {
+                font-size: 0.5rem;
+            }
+
+            .countdown-header.compact .countdown-label {
+                font-size: 0.45rem;
             }
 
             .swiper {
@@ -1375,6 +1473,35 @@
     </style>
 </head>
 <body>
+    <!-- Header fixe avec compte à rebours SUR LA MÊME LIGNE -->
+    <header class="countdown-header" id="countdownHeader">
+        <div class="countdown-content">
+            <h2 class="countdown-title">Le Séminaire commence dans :</h2>
+            <div class="countdown-container">
+                <div class="countdown-item">
+                    <div class="countdown-value" id="days">00</div>
+                    <div class="countdown-label">Jours</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="hours">00</div>
+                    <div class="countdown-label">Heures</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="minutes">00</div>
+                    <div class="countdown-label">Minutes</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="seconds">00</div>
+                    <div class="countdown-label">Secondes</div>
+                </div>
+            </div>
+        </div>
+        <div class="countdown-message" id="countdownMessage">
+            Le séminaire approche à grands pas !
+        </div>
+    </header>
+
+    <!-- Le reste du code reste inchangé -->
     <!-- Carousel Header - NOUVEAU CAROUSEL AUTOMATIQUE -->
     <header>
         <div class="header-carousel">
@@ -1430,32 +1557,6 @@
 
     <!-- Main Container -->
     <div class="container">
-        <!-- Compte à rebours Section -->
-        <div class="countdown-section" id="countdownSection" data-aos="fade-up">
-            <h2>⏳ Compte à Rebours</h2>
-            <div class="countdown-container">
-                <div class="countdown-item">
-                    <div class="countdown-value" id="days">00</div>
-                    <div class="countdown-label">Jours</div>
-                </div>
-                <div class="countdown-item">
-                    <div class="countdown-value" id="hours">00</div>
-                    <div class="countdown-label">Heures</div>
-                </div>
-                <div class="countdown-item">
-                    <div class="countdown-value" id="minutes">00</div>
-                    <div class="countdown-label">Minutes</div>
-                </div>
-                <div class="countdown-item">
-                    <div class="countdown-value" id="seconds">00</div>
-                    <div class="countdown-label">Secondes</div>
-                </div>
-            </div>
-            <div class="countdown-message" id="countdownMessage">
-                Le séminaire approche à grands pas !
-            </div>
-        </div>
-
         <!-- Theme Section - Style JIF -->
         <div class="theme-section" data-aos="fade-up">
             <h2>🎯 Thème 2025</h2>
@@ -1772,7 +1873,7 @@
 
             // Si la date est passée, on cache le compte à rebours
             if (timeLeft < 0) {
-                document.getElementById('countdownSection').style.display = 'none';
+                document.getElementById('countdownHeader').style.display = 'none';
                 return;
             }
 
@@ -1787,26 +1888,27 @@
             document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
             document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
             document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-
-            // Message dynamique selon le temps restant
-            const messageElement = document.getElementById('countdownMessage');
-            if (days > 30) {
-                messageElement.textContent = 'Le séminaire approche à grands pas !';
-            } else if (days > 7) {
-                messageElement.textContent = 'Plus que quelques semaines avant le séminaire !';
-            } else if (days > 1) {
-                messageElement.textContent = 'Presque là ! Préparez-vous pour cette belle expérience familiale.';
-            } else if (days === 1) {
-                messageElement.textContent = 'Dernier jour ! À demain pour le séminaire !';
-            } else {
-                messageElement.textContent = 'C\'est aujourd\'hui ! Bienvenue au séminaire des familles !';
-            }
         }
 
         // Initialisation du compte à rebours
         updateCountdown();
         // Mise à jour toutes les secondes
         setInterval(updateCountdown, 1000);
+
+        // Gestion du header compact lors du défilement
+        function handleScroll() {
+            const header = document.getElementById('countdownHeader');
+            const scrollPosition = window.scrollY;
+            
+            if (scrollPosition > 100) {
+                header.classList.add('compact');
+            } else {
+                header.classList.remove('compact');
+            }
+        }
+
+        // Écouteur d'événement pour le défilement
+        window.addEventListener('scroll', handleScroll);
 
         // Initialisation du Carousel Swiper
         const swiper = new Swiper('.swiper', {
